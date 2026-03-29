@@ -379,11 +379,13 @@
     /* ── Print styles ─────────────────────────────────────── */
     @media print {
       .no-print { display: none !important; }
+      .warning-banner { display: none !important; }
       body { background: white !important; color: black !important; }
       .card { border: 1px solid #ddd !important; box-shadow: none !important; }
       .schedule-table th, .schedule-table td { color: black !important; }
       .schedule-table tbody tr:hover { background: none !important; }
       #output { page-break-inside: avoid; }
+      .cal-table tr { break-inside: avoid; }
 
       /* reveal list view columns in print */
       .col-check, .col-notes { display: table-cell; }
@@ -419,9 +421,9 @@
     <div class="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
       <!-- Tool nav (future tools slot in here) -->
       <nav class="flex items-center gap-2">
-        <span class="font-semibold text-sm" style="color: var(--accent);">Utility Tools</span>
+        <span class="font-semibold text-sm" style="color: var(--accent);" data-i18n="nav_tools">Utility Tools</span>
         <span style="color: var(--border);">|</span>
-        <span class="text-sm font-medium" style="color: var(--text);">Study Scheduler</span>
+        <span class="text-sm font-medium" style="color: var(--text);" data-i18n="nav_tool_name">Study Scheduler</span>
         <!-- FUTURE TOOLS: add <a> links here for each new tool page -->
       </nav>
 
@@ -438,8 +440,8 @@
 
     <!-- Title -->
     <div class="no-print">
-      <h1 class="text-2xl font-bold tracking-tight" style="color: var(--text);">Study Schedule Generator</h1>
-      <p class="mt-1 text-sm" style="color: var(--text-muted);">
+      <h1 class="text-2xl font-bold tracking-tight" style="color: var(--text);" data-i18n="page_title">Study Schedule Generator</h1>
+      <p class="mt-1 text-sm" style="color: var(--text-muted);" data-i18n="page_subtitle">
         Enter your exam details and get a day-by-day study plan.
       </p>
     </div>
@@ -450,10 +452,10 @@
       <!-- Mode toggle -->
       <div>
         <div class="mode-toggle">
-          <button class="mode-btn active" data-mode="fill">Fill my schedule</button>
-          <button class="mode-btn" data-mode="target">Hit a target</button>
+          <button class="mode-btn active" data-mode="fill" data-i18n="mode_fill">Fill my schedule</button>
+          <button class="mode-btn" data-mode="target" data-i18n="mode_target">Hit a target</button>
         </div>
-        <p id="modeHint" class="mt-2 text-xs" style="color: var(--text-muted);">
+        <p id="modeHint" class="mt-2 text-xs" style="color: var(--text-muted);" data-i18n="hint_fill">
           Fills every available day up to your daily limit.
         </p>
       </div>
@@ -461,24 +463,24 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
         <div class="space-y-1.5">
-          <label for="examDate">Exam Date</label>
+          <label for="examDate" data-i18n="label_exam_date">Exam Date</label>
           <input id="examDate" type="date" class="field" />
         </div>
 
         <!-- Only shown in "target" mode -->
         <div class="space-y-1.5" id="totalHoursField" style="display:none;">
-          <label for="totalHours">Total Study Hours</label>
-          <input id="totalHours" type="number" min="1" step="0.5" placeholder="e.g. 40" class="field" />
+          <label for="totalHours" data-i18n="label_total_hours">Total Study Hours</label>
+          <input id="totalHours" type="number" min="1" step="0.5" class="field" data-i18n-placeholder="placeholder_total" placeholder="e.g. 40" />
         </div>
 
         <div class="space-y-1.5">
-          <label for="maxHours">Hours Per Day</label>
-          <input id="maxHours" type="number" min="0.5" max="24" step="0.5" placeholder="e.g. 4" class="field" />
+          <label for="maxHours" data-i18n="label_hours_day">Hours Per Day</label>
+          <input id="maxHours" type="number" min="0.5" max="23" step="0.5" class="field" data-i18n-placeholder="placeholder_hours" placeholder="e.g. 4" />
         </div>
 
         <div class="space-y-1.5">
-          <label for="restDays">Rest Days Per Week <span style="font-weight:400;">(optional)</span></label>
-          <input id="restDays" type="number" min="0" max="6" step="1" placeholder="e.g. 1" class="field" value="0" />
+          <label for="restDays"><span data-i18n="label_rest_days">Rest Days Per Week</span> <span style="font-weight:400;" data-i18n="label_optional">(optional)</span></label>
+          <input id="restDays" type="number" min="0" max="6" step="1" class="field" data-i18n-placeholder="placeholder_rest" placeholder="e.g. 1" value="0" />
         </div>
 
       </div>
@@ -486,7 +488,7 @@
       <!-- Error message -->
       <div id="errorMsg" class="hidden"></div>
 
-      <button id="generateBtn" class="btn-primary w-full sm:w-auto">Generate Schedule</button>
+      <button id="generateBtn" class="btn-primary w-full sm:w-auto" data-i18n="btn_generate">Generate Schedule</button>
     </section>
 
     <!-- ── Output ─────────────────────────────────────────── -->
@@ -496,29 +498,29 @@
 
       <!-- Export actions -->
       <div id="exportActions" class="hidden no-print flex flex-wrap gap-2 mt-3">
-        <button id="printBtn" class="btn-secondary">Print / Save PDF</button>
-        <button id="copyNotionBtn" class="btn-secondary">Copy for Notion</button>
-        <button id="copyRawBtn" class="btn-secondary">Copy Raw Text</button>
-        <button id="calExportBtn" class="btn-secondary">Export to Calendar</button>
+        <button id="printBtn" class="btn-secondary" data-i18n="btn_print">Print / Save PDF</button>
+        <button id="copyNotionBtn" class="btn-secondary" data-i18n="btn_notion">Copy for Notion</button>
+        <button id="copyRawBtn" class="btn-secondary" data-i18n="btn_raw">Copy Raw Text</button>
+        <button id="calExportBtn" class="btn-secondary" data-i18n="btn_export_cal">Export to Calendar</button>
       </div>
 
       <!-- Calendar export panel -->
       <div id="calExportPanel" class="hidden no-print card p-4 mt-3">
         <div class="flex items-center justify-between mb-3">
-          <span class="font-semibold text-sm" style="color:var(--text);">Export to Calendar (.ics)</span>
+          <span class="font-semibold text-sm" style="color:var(--text);" data-i18n="cal_panel_title">Export to Calendar (.ics)</span>
           <button id="calExportClose" style="background:none;border:none;cursor:pointer;font-size:1.1rem;line-height:1;padding:0.1rem 0.3rem;color:var(--text-muted);">✕</button>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
           <div class="space-y-1.5">
-            <label for="calEventName">Event Name</label>
-            <input id="calEventName" type="text" class="field" value="Study Session" placeholder="Study Session" />
+            <label for="calEventName" data-i18n="label_event_name">Event Name</label>
+            <input id="calEventName" type="text" class="field" data-i18n-value="event_name_default" data-i18n-placeholder="event_name_default" value="Study Session" placeholder="Study Session" />
           </div>
           <div class="space-y-1.5">
-            <label for="calStartTime">Start Time</label>
+            <label for="calStartTime" data-i18n="label_start_time">Start Time</label>
             <input id="calStartTime" type="time" class="field" value="09:00" />
           </div>
         </div>
-        <button id="calDownloadBtn" class="btn-primary">Download .ics</button>
+        <button id="calDownloadBtn" class="btn-primary" data-i18n="btn_download_ics">Download .ics</button>
       </div>
 
     </section>
