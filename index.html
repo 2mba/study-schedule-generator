@@ -19,6 +19,42 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Study Schedule Generator" />
   <meta name="twitter:description" content="Free exam planner. Set your date, hours per day, and rest days — get a full study schedule instantly." />
+
+  <!-- JSON-LD structured data for search engines and AI -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Study Schedule Generator",
+    "url": "https://obair.github.io/study-schedule-generator/",
+    "description": "A free browser-based tool that generates a personalized day-by-day study schedule. Input your exam date, hours per day, and optional rest days. Outputs a full schedule in list or calendar-week view. Exports to PDF, Notion-compatible markdown, plain text, and iCalendar (.ics).",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Fill schedule mode: fills every available day up to a daily hour limit",
+      "Hit a target mode: distributes a fixed total of study hours across available days",
+      "Rest days per week setting",
+      "List view and calendar week view",
+      "Export to PDF via print",
+      "Export to Notion-compatible markdown with checkboxes",
+      "Export to plain text",
+      "Export to iCalendar (.ics) with custom event name and start time",
+      "Pastel and dark themes",
+      "Locale-aware date formatting"
+    ],
+    "potentialAction": {
+      "@type": "UseAction",
+      "target": "https://2mba.github.io/study-schedule-generator/"
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
