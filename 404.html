@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-pastel">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Page not found</title>
+  <meta name="description" content="This page does not exist. Return to the Study Schedule Generator." />
+  <link rel="canonical" href="https://2mba.github.io/study-schedule-generator/" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html.theme-pastel {
+      --bg: #fff1f5;
+      --surface: #ffffff;
+      --text: #3b1f2b;
+      --text-muted: #9d6e7e;
+      --accent: #ec4899;
+      --accent-fg: #ffffff;
+      --border: #fbcfe8;
+      --radius: 0.75rem;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      max-width: 520px;
+      margin: 80px auto;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 10px 18px;
+      background: var(--accent);
+      color: var(--accent-fg);
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Page not found</h1>
+    <p class="muted">
+      This page does not exist or got moved somewhere it should not be.
+    </p>
+
+    <a class="btn" href="/study-schedule-generator/">Go back to planner</a>
+  </div>
+</body>
+</html>

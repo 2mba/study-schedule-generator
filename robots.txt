@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://2mba.github.io/study-schedule-generator/sitemap.xml
